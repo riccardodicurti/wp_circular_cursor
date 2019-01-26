@@ -21,16 +21,16 @@ $j(document)
     }, 100);
 });
 
-$j(".hover").mouseenter(function(e) {
-    $j('.custom-cursor').addClass( "hover--reg" );
-    dimensione = 40;
+$j(document).ready(function () {
+  $j("a").addClass( "hover" );
 
-    console.log("HELLO");
-});
+  $j(".hover").mouseenter(function(e) {
+      $j('.custom-cursor').addClass( "hover--reg" );
+      dimensione = 6;
+  });
 
-$j(".hover").mouseleave(function(){
-    $j('.custom-cursor').removeClass( "hover--reg" );
-    dimensione = 6;
-
-    console.log("BYE");
+  $j(".hover").mouseleave(function(){
+      $j('.custom-cursor').removeClass( "hover--reg" );
+      dimensione = 6;
+  });
 });
