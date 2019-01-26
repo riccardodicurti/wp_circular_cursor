@@ -1,0 +1,33 @@
+/* // */
+.custom-cursor span {
+  background: #202020;
+  border-radius: 100%;
+  display: block;
+  overflow: visible;
+  pointer-events: none;
+  position: fixed;
+  transition: opacity .25s ease;
+}
+
+.custom-cursor span:nth-child(1) {
+  width: 12px;
+  height: 12px;
+  text-align: center;
+  z-index: 10;
+}
+
+.custom-cursor span:nth-child(2) {
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  background: rgba(32, 32, 32, 0.22);
+  z-index: 9;
+}
+
+.hover--reg.custom-cursor span:nth-child(2) {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  z-index: 9;
+  background: rgba(32, 32, 32, 0.22);
+}
