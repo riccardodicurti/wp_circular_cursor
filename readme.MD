@@ -17,5 +17,6 @@ inserire una gif animata per vedere come funziona
 
 ### credits
 
-[Plugin Handbook](https://developer.wordpress.org/plugins/settings/custom-settings-page/)
-[How to Use WordPress Color Picker API](https://code.tutsplus.com/articles/how-to-use-wordpress-color-picker-api--wp-33067)
++ [Plugin Handbook](https://developer.wordpress.org/plugins/settings/custom-settings-page/)
++ [How to Use WordPress Color Picker API](https://code.tutsplus.com/articles/how-to-use-wordpress-color-picker-api--wp-33067)
++ [Add an Alpha RGBa Color Picker to a WordPress Plugin Input Field](https://wpbeaches.com/add-an-rgba-color-picker-to-a-wordpress-plugin-input-field/)
