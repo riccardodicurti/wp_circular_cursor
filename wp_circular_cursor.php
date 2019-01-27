@@ -2,10 +2,10 @@
 /**
  * Plugin Name:       WordPress Circular Cursor
  * Plugin URI:        http://example.com/plugin-name-uri/
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       WordPress Circular Cursor è un plugin che ti permette di migliorare il tuo cursore rendendolo particolare.
  * Version:           0.1.0
  * Author:            Riccardo Di Curti
- * Author URI:        http://example.com/
+ * Author URI:        https://riccardodicurti.it/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       rdc_wcc
@@ -94,8 +94,6 @@ add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
  }
 
  function rdc_wcc_options_page() {
-	// add_menu_page( string $page_title, string $menu_title, string $capability, string $menu_slug, callable $function = '', string $icon_url = '', int $position = null )
-  // add_menu_page( 'WordPress Circular Cursor', 'Circular Cursor', 'manage_options', 'rdc_wcc', 'rdc_wcc_options_page_html', 'dashicons-image-filter' );
 	add_options_page( 'WordPress Circular Cursor', 'Circular Cursor', 'manage_options', 'rdc_wcc', 'rdc_wcc_options_page_html' );
  }
  add_action( 'admin_menu', 'rdc_wcc_options_page' );
