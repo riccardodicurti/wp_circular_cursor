@@ -1,4 +1,4 @@
-var dimensione = 6;
+var dimensione = options.dim_seconda_pallina / 2;
 var $j = jQuery;
 
 $j(document).ready(function () {
@@ -9,8 +9,8 @@ $j(document)
   .mousemove(function(e) {
     $j('#cmain')
       .css({
-        left: e.clientX - 6,
-        top: e.clientY - 6
+        left: e.clientX - (options.dim_prima_pallina / 2),
+        top: e.clientY - (options.dim_prima_pallina / 2)
       });
     setTimeout(function() {
       $j('#cfollow')
@@ -18,7 +18,7 @@ $j(document)
           left: e.clientX - dimensione,
           top: e.clientY - dimensione
         });
-    }, 100);
+    }, options.vel_seconda_pallina);
 });
 
 $j(document).ready(function () {
@@ -26,11 +26,24 @@ $j(document).ready(function () {
 
   $j(".hover").mouseenter(function(e) {
       $j('.custom-cursor').addClass( "hover--reg" );
-      dimensione = 6;
+      dimensione = options.dim_seconda_pallina / 2;
   });
 
   $j(".hover").mouseleave(function(){
       $j('.custom-cursor').removeClass( "hover--reg" );
-      dimensione = 6;
+      dimensione = options.dim_seconda_pallina / 2;
   });
+
+  $j('#cmain').css({ backgroundColor: options.col_prima_pallina, width: options.dim_prima_pallina, height: options.dim_prima_pallina });
+  $j('#cfollow').css({ backgroundColor: options.col_seconda_pallina, width: options.dim_seconda_pallina, height: options.dim_seconda_pallina });
+
+  if (options.numero_di_palline == 1) {
+    $j('#cfollow').hide();
+  }
+
+  if (options.cursore) {
+    $j('*').css('cursor', 'none');
+  } else {
+    $j('*').css('cursor', 'auto');
+  }
 });
