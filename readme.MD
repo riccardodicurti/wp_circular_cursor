@@ -14,7 +14,7 @@ inserire una gif animata per vedere come funziona
 
 
 
-![](https://gfycat.com/ElasticQualifiedHarvestmen)
+![](https://thumbs.gfycat.com/ElasticQualifiedHarvestmen-size_restricted.gif)
 
 ### credits
 
