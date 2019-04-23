@@ -25,17 +25,24 @@ $j(document).ready(function () {
   $j("a").addClass( "hover" );
 
   $j(".hover").mouseenter(function(e) {
-      $j('.custom-cursor').addClass( "hover--reg" );
+      // $j('.custom-cursor').addClass( "hover--reg" );
+      $j('.custom-cursor #cfollow').css({'transform': 'scale(' + options.multi_seconda_pallina + ')'});
       dimensione = options.dim_seconda_pallina / 2;
   });
 
   $j(".hover").mouseleave(function(){
-      $j('.custom-cursor').removeClass( "hover--reg" );
+      // $j('.custom-cursor').removeClass( "hover--reg" );
+      $j('.custom-cursor #cfollow').css({'transform': 'auto'});      
       dimensione = options.dim_seconda_pallina / 2;
   });
 
   $j('#cmain').css({ backgroundColor: options.col_prima_pallina, width: options.dim_prima_pallina, height: options.dim_prima_pallina });
   $j('#cfollow').css({ backgroundColor: options.col_seconda_pallina, width: options.dim_seconda_pallina, height: options.dim_seconda_pallina });
+
+  // $j('#cfollow').css({'background-color': 'white !important'});
+
+  // console.log($j('.hover--reg #cfollow').css({'transform': 'scale(12) !important'}));
+
 
   if (options.numero_di_palline == 1) {
     $j('#cfollow').hide();

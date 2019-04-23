@@ -3,7 +3,7 @@
  * Plugin Name:       WordPress Circular Cursor
  * Plugin URI:        http://example.com/plugin-name-uri/
  * Description:       WordPress Circular Cursor è un plugin che ti permette di migliorare il tuo cursore rendendolo particolare.
- * Version:           0.1.0
+ * Version:           20190423
  * Author:            Riccardo Di Curti
  * Author URI:        https://riccardodicurti.it/
  * License:           GPL-2.0+
@@ -13,8 +13,9 @@
  */
 
 function rdc_wcc_enqueue_dependencies() {
-	wp_enqueue_style( 'rdc_wcc_style', plugin_dir_url( __FILE__ ) . 'public/css/circular_cursor_style.css');
-	wp_register_script( 'rdc_wcc_scripts', plugin_dir_url( __FILE__ ) . 'public/js/circular_cursor.js', array( 'jquery' ));
+	wp_enqueue_style( 'rdc_wcc_style', plugin_dir_url( __FILE__ ) . 'public/css/circular_cursor_style.min.css');
+	wp_register_script( 'rdc_wcc_scripts', plugin_dir_url( __FILE__ ) . 'public/js/circular_cursor.js', array( 'jquery' ), false, true);
+
 	$options = get_option( 'rdc_wcc_options' );
 	wp_localize_script( 'rdc_wcc_scripts', 'options', $options );
 	wp_enqueue_script( 'rdc_wcc_scripts' );
@@ -24,19 +25,21 @@ add_action( 'wp_enqueue_scripts', 'rdc_wcc_enqueue_dependencies');
 function rdc_wcc_enqueue_admin_dependencies() {
 	wp_enqueue_style( 'rdc_wcc_admin_style', plugin_dir_url( __FILE__ ) . 'admin/css/color_picker_style.min.css');
 	wp_enqueue_style( 'rdc_wcc_admin_style_2', plugin_dir_url( __FILE__ ) . 'admin/css/admin_page_style.min.css');
-  wp_enqueue_script( 'rdc_wcc_admin_scripts', plugin_dir_url( __FILE__ ) . 'admin/js/wp-color-picker-alpha.js', array( 'wp-color-picker' ), false, true );
+  	wp_enqueue_script( 'rdc_wcc_admin_scripts', plugin_dir_url( __FILE__ ) . 'admin/js/wp-color-picker-alpha.js', array( 'wp-color-picker' ), false, true );
 }
 add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
 
  function rdc_wcc_settings_init() {
-  register_setting( 'rdc_wcc', 'rdc_wcc_options' );
-  add_settings_section( 'rdc_wcc_section_developers', __( '', 'rdc_wcc' ), 'rdc_wcc_section_developers_cb', 'rdc_wcc' );
+  	register_setting( 'rdc_wcc', 'rdc_wcc_options' );
+
+  	add_settings_section( 'rdc_wcc_section_developers', __( '', 'rdc_wcc' ), 'rdc_wcc_section_developers_cb', 'rdc_wcc' );
 	add_settings_field( 'rdc_wcc_field_cursore', __( 'Turn off the basic cursor?', 'rdc_wcc' ), 'rdc_wcc_field_cursore', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_cursore', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_numero_di_palline', __( 'Select the type of cursor', 'rdc_wcc' ), 'rdc_wcc_field_numero_di_palline', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_numero_di_palline', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_colore_prima_pallina', __( 'Select the color of the first cursor', 'rdc_wcc' ), 'rdc_wcc_field_colore_prima_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_colore_prima_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_dimensione_prima_pallina', __( 'Select the size of the first cursor', 'rdc_wcc' ), 'rdc_wcc_field_dimensione_prima_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_dimensione_prima_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_colore_seconda_pallina', __( 'Select the color of the second cursor', 'rdc_wcc' ), 'rdc_wcc_field_colore_seconda_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_colore_seconda_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_dimensione_seconda_pallina', __( 'Select the size of the second cursor', 'rdc_wcc' ), 'rdc_wcc_field_dimensione_seconda_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_dimensione_seconda_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
+	add_settings_field( 'rdc_wcc_field_multiplicatore_seconda_pallina', __( 'Select the growth multiplier of the second cursor', 'rdc_wcc' ), 'rdc_wcc_field_multiplicatore_seconda_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_multiplicatore_seconda_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_ritardo_seconda_pallina', __( 'Select the delay of the second cursor respect to the first', 'rdc_wcc' ), 'rdc_wcc_field_ritardo_seconda_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_ritardo_seconda_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
  }
  add_action( 'admin_init', 'rdc_wcc_settings_init' );
@@ -88,6 +91,11 @@ add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
 	echo '<input type="number" class="dim_seconda_pallina" name="rdc_wcc_options[dim_seconda_pallina]" min="1" max="20" step="1" value="' . $rdc_wcc_options['dim_seconda_pallina'] . '"/><span> px</span>';
  }
 
+ function rdc_wcc_field_multiplicatore_seconda_pallina( $args ) {
+	$rdc_wcc_options = get_option( 'rdc_wcc_options' );
+	echo '<input type="number" class="multi_seconda_pallina" name="rdc_wcc_options[multi_seconda_pallina]" min="1" max="20" step="1" value="' . $rdc_wcc_options['multi_seconda_pallina'] . '"/><span> X</span>';
+ }
+
  function rdc_wcc_field_ritardo_seconda_pallina( $args ) {
  $rdc_wcc_options = get_option( 'rdc_wcc_options' );
  echo '<input type="number" class="vel_seconda_pallina" name="rdc_wcc_options[vel_seconda_pallina]" min="50" max="800" step="50" value="' . $rdc_wcc_options['vel_seconda_pallina'] . '"/><span> millisecondi</span> ';
@@ -103,7 +111,7 @@ add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
   	return;
   }
   if ( isset( $_GET['settings-updated'] ) ) {
-  add_settings_error( 'rdc_wcc_messages', 'rdc_wcc_message', __( 'Settings Saved', 'rdc_wcc' ), 'updated' );
+  	add_settings_error( 'rdc_wcc_messages', 'rdc_wcc_message', __( 'Settings Saved', 'rdc_wcc' ), 'updated' );
   }
   settings_errors( 'rdc_wcc_messages' );
   ?>

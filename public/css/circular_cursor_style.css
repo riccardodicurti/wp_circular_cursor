@@ -26,8 +26,3 @@
   z-index: 10;
   transition: transform .25s ease-in-out;
 }
-
-.hover--reg.custom-cursor span:nth-child(2) {
-  transform: scale(6);
-  overflow: hidden;
-}
