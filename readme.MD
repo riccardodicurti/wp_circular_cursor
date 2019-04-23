@@ -32,4 +32,3 @@ Questo plugin offre anche un menu di costumizzazione che ti permette di personal
 + [Plugin Handbook](https://developer.wordpress.org/plugins/settings/custom-settings-page/)
 + [How to Use WordPress Color Picker API](https://code.tutsplus.com/articles/how-to-use-wordpress-color-picker-api--wp-33067)
 + [Add an Alpha RGBa Color Picker to a WordPress Plugin Input Field](https://wpbeaches.com/add-an-rgba-color-picker-to-a-wordpress-plugin-input-field/)
-+ [creare gif per pagina github](https://gist.github.com/paulirish/b6cf161009af0708315c)
