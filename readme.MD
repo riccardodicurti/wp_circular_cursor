@@ -15,6 +15,7 @@ Il plugin È stato realizzato tramite uno script JQuery e adattato per WordPress
 + attivare il secondo cursore a pallina che segue il primo cursore
 + scegliere il colore del secondo cursore
 + scegliere la dimensione del secondo cursore
++ scegliere la dimensione di ingrandimento del secondo cursore quando passa sopra ad un link
 + scegliere il ritardo con il quale il secondo cursore segue il primo
 
 ### modifiche applicabili dal pannello nel backend
@@ -23,7 +24,7 @@ Questo plugin offre anche un menu di costumizzazione che ti permette di personal
 
 + Gli amministratori potranno modificare sia il colore che la grandezza del circular cursor;
 + Gli amministratori potranno scegliere se continuare a visualizzare o meno il cursore normale assieme alla pallina;
-+ Gli amministratori potranno aggiungere una seconda pallina che seguirà la pallina principale;
++ Gli amministratori potranno aggiungere una seconda pallina che seguirà la pallina principale e decidere di quanto farla crescere quando passa sopra ad un link;
 + Gli amministratori potranno scegliere il ritardo con il quale la seconda pallina seguirà il cursore.
 
 ### credits

@@ -98,7 +98,7 @@ add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
 
  function rdc_wcc_field_ritardo_seconda_pallina( $args ) {
  $rdc_wcc_options = get_option( 'rdc_wcc_options' );
- echo '<input type="number" class="vel_seconda_pallina" name="rdc_wcc_options[vel_seconda_pallina]" min="50" max="800" step="50" value="' . $rdc_wcc_options['vel_seconda_pallina'] . '"/><span> millisecondi</span> ';
+ echo '<input type="number" class="vel_seconda_pallina" name="rdc_wcc_options[vel_seconda_pallina]" min="50" max="800" step="50" value="' . $rdc_wcc_options['vel_seconda_pallina'] . '"/><span> milliseconds</span> ';
  }
 
  function rdc_wcc_options_page() {
