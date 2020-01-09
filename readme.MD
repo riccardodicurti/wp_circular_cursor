@@ -9,6 +9,7 @@ Il plugin È stato realizzato tramite uno script JQuery e adattato per WordPress
 ### features
 
 + disattivare il cursore di base
++ impostare il valore di z-index della pallina
 + attivare il cursore a palliana
 + scegliere il colore del cursore di base
 + scegliere la dimensione del cursore di base
