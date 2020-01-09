@@ -33,7 +33,7 @@ add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
  function rdc_wcc_settings_init() {
   	register_setting( 'rdc_wcc', 'rdc_wcc_options' );
 
-  	add_settings_section( 'rdc_wcc_section_developers', __( '', 'rdc_wcc' ), 'rdc_wcc_section_developers_cb', 'rdc_wcc' );
+  add_settings_section( 'rdc_wcc_section_developers', __( '', 'rdc_wcc' ), 'rdc_wcc_section_developers_cb', 'rdc_wcc' );
 	add_settings_field( 'rdc_wcc_field_cursore', __( 'Turn off the basic cursor?', 'rdc_wcc' ), 'rdc_wcc_field_cursore', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_cursore', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_numero_di_palline', __( 'Select the type of cursor', 'rdc_wcc' ), 'rdc_wcc_field_numero_di_palline', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_numero_di_palline', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_colore_prima_pallina', __( 'Select the color of the first cursor', 'rdc_wcc' ), 'rdc_wcc_field_colore_prima_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_colore_prima_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
