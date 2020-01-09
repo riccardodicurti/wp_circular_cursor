@@ -30,7 +30,7 @@ $j(document).ready(function () {
   });
 
   $j(".hover").mouseleave(function(){
-      $j('.custom-cursor #cfollow').css({'transform': 'auto'});
+      $j('.custom-cursor #cfollow').css({'transform': 'scale(1)'});
       dimensione = options.dim_seconda_pallina / 2;
   });
 

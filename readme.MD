@@ -6,6 +6,8 @@ WordPress Circular Cursor è un plugin che ti permette di migliorare il tuo curs
 
 Il plugin È stato realizzato tramite uno script JQuery e adattato per WordPress.
 
+Si consiglia di installare anche [GitHub Updater](https://github.com/afragen/github-updater) per mantenere aggiornato il plugin all'ultima release.
+
 ### features
 
 + disattivare il cursore di base
