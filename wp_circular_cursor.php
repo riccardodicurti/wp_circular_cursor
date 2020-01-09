@@ -2,8 +2,9 @@
 /**
  * Plugin Name:       WordPress Circular Cursor
  * Plugin URI:        http://example.com/plugin-name-uri/
+ * GitHub Plugin URI: riccardodicurti/wp_circular_cursor
  * Description:       WordPress Circular Cursor è un plugin che ti permette di migliorare il tuo cursore rendendolo particolare.
- * Version:           20190423
+ * Version:           20200109
  * Author:            Riccardo Di Curti
  * Author URI:        https://riccardodicurti.it/
  * License:           GPL-2.0+

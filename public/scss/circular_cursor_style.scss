@@ -1,4 +1,5 @@
 $black_color: #A79665;
+$break-small: 999px;
 
 * {
   cursor: none;
@@ -27,9 +28,8 @@ $black_color: #A79665;
     z-index: 10;
     transition: transform .25s ease-in-out;
   }
-}
 
-// .hover--reg.custom-cursor span:nth-child(2) {
-//    transform: scale(6);
-//    overflow: hidden;
-// }
+  @media only screen and (max-width: $break-small) {
+    display: none;
+  }
+}
