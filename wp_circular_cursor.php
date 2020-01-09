@@ -26,15 +26,16 @@ add_action( 'wp_enqueue_scripts', 'rdc_wcc_enqueue_dependencies');
 function rdc_wcc_enqueue_admin_dependencies() {
 	wp_enqueue_style( 'rdc_wcc_admin_style', plugin_dir_url( __FILE__ ) . 'admin/css/color_picker_style.min.css');
 	wp_enqueue_style( 'rdc_wcc_admin_style_2', plugin_dir_url( __FILE__ ) . 'admin/css/admin_page_style.min.css');
-  	wp_enqueue_script( 'rdc_wcc_admin_scripts', plugin_dir_url( __FILE__ ) . 'admin/js/wp-color-picker-alpha.js', array( 'wp-color-picker' ), false, true );
+  wp_enqueue_script( 'rdc_wcc_admin_scripts', plugin_dir_url( __FILE__ ) . 'admin/js/wp-color-picker-alpha.js', array( 'wp-color-picker' ), false, true );
 }
 add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
 
  function rdc_wcc_settings_init() {
-  	register_setting( 'rdc_wcc', 'rdc_wcc_options' );
+  register_setting( 'rdc_wcc', 'rdc_wcc_options' );
 
   add_settings_section( 'rdc_wcc_section_developers', __( '', 'rdc_wcc' ), 'rdc_wcc_section_developers_cb', 'rdc_wcc' );
 	add_settings_field( 'rdc_wcc_field_cursore', __( 'Turn off the basic cursor?', 'rdc_wcc' ), 'rdc_wcc_field_cursore', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_cursore', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
+	add_settings_field( 'rdc_wcc_field_cursore', __( 'Set the z-index value of the first cursor', 'rdc_wcc' ), 'rdc_wcc_field_zindex', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_zindex', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_numero_di_palline', __( 'Select the type of cursor', 'rdc_wcc' ), 'rdc_wcc_field_numero_di_palline', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_numero_di_palline', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_colore_prima_pallina', __( 'Select the color of the first cursor', 'rdc_wcc' ), 'rdc_wcc_field_colore_prima_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_colore_prima_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
 	add_settings_field( 'rdc_wcc_field_dimensione_prima_pallina', __( 'Select the size of the first cursor', 'rdc_wcc' ), 'rdc_wcc_field_dimensione_prima_pallina', 'rdc_wcc', 'rdc_wcc_section_developers', [ 'label_for' => 'rdc_wcc_field_dimensione_prima_pallina', 'class' => 'rdc_wcc_row', 'rdc_wcc_custom_data' => 'custom', ] );
@@ -54,8 +55,13 @@ add_action( 'admin_enqueue_scripts', 'rdc_wcc_enqueue_admin_dependencies' );
  function rdc_wcc_field_cursore( $args ) {
   $rdc_wcc_options = get_option( 'rdc_wcc_options' );
   ?>
-	<input type="checkbox" name="rdc_wcc_options[cursore]" value="1"<?php checked( 1 == $rdc_wcc_options['cursore'] ); ?> /><br>
+	<input type="checkbox" name="rdc_wcc_options[zindex]" value="10"<?php checked( 1 == $rdc_wcc_options['zindex'] ); ?> /><br>
 	<?php
+ }
+
+ function rdc_wcc_field_zindex( $args ) {
+	$rdc_wcc_options = get_option( 'rdc_wcc_options' );
+  echo '<input type="number" name="rdc_wcc_options[zindex]" min="0" max="1001" step="1" value="' . $rdc_wcc_options['zindex'] . '"/>';
  }
 
  function rdc_wcc_field_numero_di_palline( $args ) {
