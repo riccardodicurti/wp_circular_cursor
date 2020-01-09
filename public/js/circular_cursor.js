@@ -22,7 +22,7 @@ $j(document)
 });
 
 $j(document).ready(function () {
-  $j("a").addClass( "hover" );
+  $j("a, input").addClass( "hover" );
 
   $j(".hover").mouseenter(function(e) {
       $j('.custom-cursor #cfollow').css({'transform': 'scale(' + options.multi_seconda_pallina + ')'});
