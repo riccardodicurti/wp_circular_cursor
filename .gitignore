@@ -1,2 +1,7 @@
 # ignore scss directorie
 scss/
+
+# ignore webpack 
+node_modules/
+package-lock.json
+webpack.config.js

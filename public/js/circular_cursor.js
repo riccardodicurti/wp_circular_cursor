@@ -1,4 +1,6 @@
-var dimensione = options.dim_seconda_pallina / 2;
+// var dimensione_seconda_pallina = ( options.dim_seconda_pallina * options.multi_seconda_pallina ) / 2;
+var scale_seconda_pallina = options.multi_seconda_pallina / 100;
+
 var $j = jQuery;
 
 $j(document).ready(function () {
@@ -15,27 +17,49 @@ $j(document)
     setTimeout(function() {
       $j('#cfollow')
         .css({
-          left: e.clientX - dimensione,
-          top: e.clientY - dimensione
+          left: e.clientX - ( options.dim_seconda_pallina * options.multi_seconda_pallina ) / 2,
+          top: e.clientY - ( options.dim_seconda_pallina * options.multi_seconda_pallina ) / 2
         });
     }, options.vel_seconda_pallina);
 });
 
 $j(document).ready(function () {
   $j("a, input").addClass( "hover" );
-
   $j(".hover").mouseenter(function(e) {
-      $j('.custom-cursor #cfollow').css({'transform': 'scale(' + options.multi_seconda_pallina + ')'});
-      dimensione = options.dim_seconda_pallina / 2;
+      $j('.custom-cursor #cfollow').css({
+        transform:       'scale(' + 1 + ')',        
+        WebkitTransform: 'scale(' + 1 + ')',
+        MozTransform:    'scale(' + 1 + ')',
+        OTransform:      'scale(' + 1 + ')',
+        msTransform:     'scale(' + 1 + ')'
+
+      });
   });
 
   $j(".hover").mouseleave(function(){
-      $j('.custom-cursor #cfollow').css({'transform': 'scale(1)'});
-      dimensione = options.dim_seconda_pallina / 2;
+      $j('.custom-cursor #cfollow').css({
+        transform:       'scale(' + scale_seconda_pallina + ')',        
+        WebkitTransform: 'scale(' + scale_seconda_pallina + ')',
+        MozTransform:    'scale(' + scale_seconda_pallina + ')',
+        OTransform:      'scale(' + scale_seconda_pallina + ')',
+        msTransform:     'scale(' + scale_seconda_pallina + ')'
+      });
   });
 
-  $j('#cmain').css({ backgroundColor: options.col_prima_pallina, width: options.dim_prima_pallina, height: options.dim_prima_pallina, zIndex: options.zindex });
-  $j('#cfollow').css({ backgroundColor: options.col_seconda_pallina, width: options.dim_seconda_pallina, height: options.dim_seconda_pallina, zIndex: ( options.zindex - 1 ) });
+  $j('#cmain').css({ 
+    backgroundColor: options.col_prima_pallina, 
+    width: options.dim_prima_pallina, 
+    height: options.dim_prima_pallina, 
+    zIndex: options.zindex 
+  });
+
+  $j('#cfollow').css({ 
+    backgroundColor: options.col_seconda_pallina, 
+    width: ( options.dim_seconda_pallina * options.multi_seconda_pallina ), 
+    height: ( options.dim_seconda_pallina * options.multi_seconda_pallina ), 
+    zIndex: ( options.zindex - 1 ), 
+    transform: 'scale(' + scale_seconda_pallina + ')'
+  });
 
   if (options.numero_di_palline == 1) {
     $j('#cfollow').hide();

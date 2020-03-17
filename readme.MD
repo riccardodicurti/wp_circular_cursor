@@ -30,6 +30,11 @@ Questo plugin offre anche un menu di costumizzazione che ti permette di personal
 + Gli amministratori potranno aggiungere una seconda pallina che seguirà la pallina principale e decidere di quanto farla crescere quando passa sopra ad un link;
 + Gli amministratori potranno scegliere il ritardo con il quale la seconda pallina seguirà il cursore.
 
+### changelog
+
++ 200317 - correzione problema con safari che rendeva la seconda pallina pixelata quando stava in hover
+
+
 ### credits
 
 + [Plugin Handbook](https://developer.wordpress.org/plugins/settings/custom-settings-page/)
