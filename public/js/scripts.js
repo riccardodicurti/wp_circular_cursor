@@ -2,46 +2,12 @@ var $j = jQuery;
 
 $j(document).ready(function () {
     $j( "body" ).append('<div class="custom-cursor"><span id="cmain"></span><span id="cfollow"></span></div>');
-    $j("a, input").addClass( "browser-window__link" );
+    $j("a, button").addClass( "browser-window__link" );
 
     const demo3 = new Demo3();
 
     console.log(demo3);
 });
-
-const initPageTransitions = () => {
-    setTimeout(() => document.body.classList.add("render"), 60);
-    const navdemos = Array.from(document.querySelectorAll(".demos__links .demo"));
-    const total = navdemos.length;
-    const current = navdemos.findIndex(el =>
-      el.classList.contains("demo--current")
-    );
-    const navigate = linkEl => {
-      document.body.classList.remove("render");
-      document.body.addEventListener(
-        "transitionend",
-        () => (window.location = linkEl.href)
-      );
-    };
-    navdemos.forEach(link =>
-      link.addEventListener("click", ev => {
-        ev.preventDefault();
-        navigate(ev.currentTarget);
-      })
-    );
-    document.addEventListener("keydown", ev => {
-      const keyCode = ev.keyCode || ev.which;
-      let linkEl;
-      if (keyCode === 37) {
-        linkEl = current > 0 ? navdemos[current - 1] : navdemos[total - 1];
-      } else if (keyCode === 39) {
-        linkEl = current < total - 1 ? navdemos[current + 1] : navdemos[0];
-      } else {
-        return false;
-      }
-      navigate(linkEl);
-    });
-  };
 
 /**
  * demo.js
@@ -56,15 +22,14 @@ const initPageTransitions = () => {
 
 class Demo3 {
   constructor() {
-    initPageTransitions();
     this.initCursor();
     this.initHovers();
   }
 
   initCursor() {
     const { Back } = window;
-    this.outerCursor = document.querySelector("#cmain");
-    this.innerCursor = document.querySelector("#cfollow");
+    this.outerCursor = document.querySelector("#cfollow");
+    this.innerCursor = document.querySelector("#cmain");
     this.outerCursorBox = this.outerCursor.getBoundingClientRect();
     this.outerCursorSpeed = 0;
     this.easing = Back.easeOut.config(1.7);
@@ -122,12 +87,12 @@ class Demo3 {
         height: this.outerCursorBox.height
       };
       TweenMax.to(this.outerCursor, 0.2, {
-        x: box.left,
-        y: box.top,
-        width: box.width,
-        height: box.height,
-        opacity: 0.4,
-        borderColor: "#ff0000"
+        x: box.left + ( ( box.width / 2 ) - 50 ),
+        y: box.top + (( box.height / 2 ) - 50),
+        width: 100,
+        height: 100,
+        opacity: 0.6,
+        borderColor: "#cd2653"
       });
     };
 
@@ -135,13 +100,14 @@ class Demo3 {
       this.isStuck = false;
       TweenMax.to(this.outerCursor, 0.2, {
         width: this.outerCursorOriginals.width,
-        height: this.outerCursorOriginals.height,
-        opacity: 0.2,
-        borderColor: "#ffffff"
+        height: this.outerCursorOriginals.width,
+        opacity: 0.4,
+        borderColor: "#cd2653"
       });
     };
 
     const linkItems = document.querySelectorAll(".browser-window__link");
+
     linkItems.forEach(item => {
       item.addEventListener("mouseenter", handleMouseEnter);
       item.addEventListener("mouseleave", handleMouseLeave);
