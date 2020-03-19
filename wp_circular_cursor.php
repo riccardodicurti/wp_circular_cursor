@@ -4,7 +4,7 @@
  * Plugin URI:        https://github.com/riccardodicurti/wp_circular_cursor
  * GitHub Plugin URI: riccardodicurti/wp_circular_cursor
  * Description:       WordPress Circular Cursor è un plugin che ti permette di migliorare il tuo cursore rendendolo particolare.
- * Version:           20200319a
+ * Version:           20200319b
  * Author:            Riccardo Di Curti
  * Author URI:        https://riccardodicurti.it/
  * License:           GPL-2.0+
@@ -28,6 +28,7 @@ function rdc_wcc_enqueue_dependencies() {
 		wp_enqueue_style( 'rdc_wcc_style-2', plugin_dir_url( __FILE__ ) . 'public/css/circular_cursor_magnetico_style.css');
 		wp_enqueue_script( 'rdc_wcc_scripts-2' );
 		wp_enqueue_script( 'rdc_wcc_scripts-4' );
+		wp_localize_script( 'rdc_wcc_scripts-5', 'options', $options );
 		wp_enqueue_script( 'rdc_wcc_scripts-5' );
 	} else {
 		// modalità a una o due palline normali 

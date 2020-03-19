@@ -4,6 +4,24 @@ $j(document).ready(function () {
     $j( "body" ).append('<div class="custom-cursor"><span id="cmain"></span><span id="cfollow"></span></div>');
     $j("a, button").addClass( "browser-window__link" );
 
+    $j('#cmain').css({ 
+      backgroundColor: options.col_prima_pallina, 
+      width: ( options.dim_prima_pallina ), 
+      height: ( options.dim_prima_pallina ), 
+      zIndex: ( options.zindex ),
+      top: (( options.dim_seconda_pallina / 2 ) - ( options.dim_prima_pallina / 2)),
+      left: (( options.dim_seconda_pallina / 2 ) - ( options.dim_prima_pallina / 2))
+    });
+
+    $j('#cfollow').css({ 
+      borderColor: options.col_seconda_pallina, 
+      width: ( options.dim_seconda_pallina ), 
+      height: ( options.dim_seconda_pallina ), 
+      zIndex: ( options.zindex - 1 ),
+      // top: ( options.dim_seconda_pallina / 4 ),
+      // left: ( options.dim_seconda_pallina / 4 )
+    });
+
     const demo3 = new Demo3();
 
     console.log(demo3);
@@ -40,22 +58,22 @@ class Demo3 {
     const unveilCursor = () => {
       TweenMax.set(this.innerCursor, {
         x: this.clientX,
-        y: this.clientY
+        y: this.clientY 
       });
       TweenMax.set(this.outerCursor, {
-        x: this.clientX - this.outerCursorBox.width / 2,
-        y: this.clientY - this.outerCursorBox.height / 2
+        x: this.clientX,
+        y: this.clientY
       });
       setTimeout(() => {
-        this.outerCursorSpeed = 0.2;
+        this.outerCursorSpeed = options.vel_seconda_pallina / 1000;
       }, 100);
       this.showCursor = true;
     };
     document.addEventListener("mousemove", unveilCursor);
 
     document.addEventListener("mousemove", e => {
-      this.clientX = e.clientX;
-      this.clientY = e.clientY;
+      this.clientX = e.clientX - ( options.dim_prima_pallina / 2 );
+      this.clientY = e.clientY - ( options.dim_prima_pallina / 2 );
     });
 
     const render = () => {
@@ -65,8 +83,8 @@ class Demo3 {
       });
       if (!this.isStuck) {
         TweenMax.to(this.outerCursor, this.outerCursorSpeed, {
-          x: this.clientX - this.outerCursorBox.width / 2,
-          y: this.clientY - this.outerCursorBox.height / 2
+          x: this.clientX,
+          y: this.clientY
         });
       }
       if (this.showCursor) {
@@ -87,12 +105,12 @@ class Demo3 {
         height: this.outerCursorBox.height
       };
       TweenMax.to(this.outerCursor, 0.2, {
-        x: box.left + ( ( box.width / 2 ) - 50 ),
-        y: box.top + (( box.height / 2 ) - 50),
-        width: 100,
-        height: 100,
+        x: box.left + ( ( box.width / 2 ) - ( options.dim_seconda_pallina * options.multi_seconda_pallina / 2 )),
+        y: box.top + (( box.height / 2 ) - ( options.dim_seconda_pallina * options.multi_seconda_pallina / 2 )),
+        width: ( options.dim_seconda_pallina * options.multi_seconda_pallina ),
+        height: ( options.dim_seconda_pallina * options.multi_seconda_pallina ),
         opacity: 0.6,
-        borderColor: "#cd2653"
+        borderColor: options.col_seconda_pallina
       });
     };
 
@@ -102,7 +120,7 @@ class Demo3 {
         width: this.outerCursorOriginals.width,
         height: this.outerCursorOriginals.width,
         opacity: 0.4,
-        borderColor: "#cd2653"
+        borderColor: options.col_seconda_pallina
       });
     };
 
@@ -111,30 +129,6 @@ class Demo3 {
     linkItems.forEach(item => {
       item.addEventListener("mouseenter", handleMouseEnter);
       item.addEventListener("mouseleave", handleMouseLeave);
-    });
-
-    const mainNavHoverTween = TweenMax.to(this.outerCursor, 0.3, {
-      backgroundColor: "#ffffff",
-      ease: this.easing,
-      paused: true
-    });
-
-    const mainNavMouseEnter = () => {
-      this.outerCursorSpeed = 0;
-      TweenMax.set(this.innerCursor, { opacity: 0 });
-      mainNavHoverTween.play();
-    };
-
-    const mainNavMouseLeave = () => {
-      this.outerCursorSpeed = 0.2;
-      TweenMax.set(this.innerCursor, { opacity: 1 });
-      mainNavHoverTween.reverse();
-    };
-
-    const mainNavLinks = document.querySelectorAll(".content--fixed a");
-    mainNavLinks.forEach(item => {
-      item.addEventListener("mouseenter", mainNavMouseEnter);
-      item.addEventListener("mouseleave", mainNavMouseLeave);
     });
   }
 }

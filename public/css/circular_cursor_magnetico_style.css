@@ -1,4 +1,8 @@
 
+* {
+    cursor: none
+  }
+
     .custom-cursor {
         position: fixed;
         left: 0;
@@ -20,14 +24,12 @@
       height: 30px;
       border: 1px solid #cd2653;
       z-index: 12000;
-      opacity: 0.4; 
+      opacity: 0.4;
     }
 
     #cmain {
       width: 5px;
       height: 5px;
-      left: -2.5px;
-      top: -2.5px;
       z-index: 11000;
-      background: black; 
+      background: black;
     }
