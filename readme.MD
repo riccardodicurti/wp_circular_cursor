@@ -33,6 +33,7 @@ Questo plugin offre anche un menu di costumizzazione che ti permette di personal
 ### changelog
 
 + 200317 - correzione problema con safari che rendeva la seconda pallina pixelata quando stava in hover
++ 200319 - introduzione della modalità magnetica ancora non stabile
 
 
 ### credits

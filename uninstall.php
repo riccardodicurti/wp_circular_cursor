@@ -8,5 +8,3 @@ $rdc_wcc_options = 'rdc_wcc_options';
 
 delete_option($rdc_wcc_options);
 delete_site_option($rdc_wcc_options);
-
-?>
